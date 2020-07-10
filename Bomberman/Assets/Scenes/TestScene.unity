@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 1167171369}
   - component: {fileID: 1167171368}
   - component: {fileID: 1167171367}
+  - component: {fileID: 1167171370}
   m_Layer: 0
   m_Name: Tilemap_Front
   m_TagString: Untagged
@@ -2653,3 +2654,20 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1167171370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167171362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156e35c2a5cffab49b179417d2557610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1167171365}
+  destructibleTile: {fileID: 11400000, guid: d71e11cdc2d5b724887a591346956bee, type: 2}
+  solidTile: {fileID: 11400000, guid: a2eba446ed26edc47b539e2f483a5181, type: 2}
+  explosionPrefab: {fileID: 5693929215418692276, guid: bc52433b412b7e446bbc1d0b90dd258e,
+    type: 3}

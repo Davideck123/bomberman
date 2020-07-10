@@ -9,14 +9,13 @@ public class BombSpawner : MonoBehaviour
 
     public GameObject player;
 
-
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             Vector3 worldPos = player.transform.position;
+            worldPos.y = worldPos.y + 0.3f;
             Vector3Int cell = tilemap.WorldToCell(worldPos);
             Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell);
 
