@@ -14,6 +14,7 @@ public class Bomb : MonoBehaviour
         {
             FindObjectOfType<MapDestroyer>().Explosion(transform.position);
             Destroy(gameObject);
+            FindObjectOfType<BombSpawner>().bombSpawned = false;
         }
     }
 }

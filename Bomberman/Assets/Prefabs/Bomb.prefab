@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 3738417747620434285}
   - component: {fileID: 3738417747620434284}
   - component: {fileID: -2122599175071813262}
-  m_Layer: 0
+  - component: {fileID: 4900194254387879715}
+  - component: {fileID: 5095442638623497219}
+  m_Layer: 9
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,3 +96,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5c4ed96b4ecf74e827e300bf0a5542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 2
+--- !u!70 &4900194254387879715
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738417747620434259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  m_Size: {x: 0.94362706, y: 0.7896979}
+  m_Direction: 1
+--- !u!58 &5095442638623497219
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738417747620434259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: f39250041c9eb6246907a3fb02bfa70f, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39, y: 0.33650866}
+  serializedVersion: 2
+  m_Radius: 0.10650865

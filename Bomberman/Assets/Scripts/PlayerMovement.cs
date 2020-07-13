@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    public Collider2D[] colliders = new Collider2D[3];
+
     Vector2 movement;
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetFloat("Speed", movement.sqrMagnitude);       
     }
 
     void FixedUpdate()
