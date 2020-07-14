@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    public Collider2D collider;
+    public new Collider2D collider;
 
     public GameObject[] wallChecks = new GameObject[4]; // bottom, top, right, left
     int[,] directions = new int[,] { { 0, -1 }, { 0, 1 }, { 1, 0}, { -1, 0} }; // bottom, top, right, left

@@ -22,13 +22,23 @@ public class BombSpawner : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !bombSpawned)
         {
-            Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell);
-
-            Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
-            lastBombCell = cell;
-            bombCollision = false;
-            bombSpawned = true;
+            spawnBomb(cell);
         }
+        updateBombCollision(cell);
+    }
+
+    void spawnBomb(Vector3Int cell)
+    {
+        Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell);
+
+        Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
+        lastBombCell = cell;
+        bombCollision = false;
+        bombSpawned = true;
+    }
+
+    void updateBombCollision(Vector3Int cell)
+    {
         if (!bombCollision && lastBombCell == cell)
         {
             Physics2D.IgnoreLayerCollision(8, 9);

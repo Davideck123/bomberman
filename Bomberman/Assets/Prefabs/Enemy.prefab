@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.8
-  tilemap: {fileID: 0}
+  tilemap: {fileID: 5272915179212221134, guid: 77d85a73d6b75434c9de5683fa8dda8a, type: 3}
   animator: {fileID: 2040573421620676719}
   rb: {fileID: 2040573421620676716}
   collider: {fileID: 2040573421620676712}
