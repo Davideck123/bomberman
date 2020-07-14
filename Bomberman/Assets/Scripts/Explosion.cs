@@ -24,6 +24,7 @@ public class Explosion : MonoBehaviour
             col.gameObject.GetComponent<EnemyAI>().moveSpeed = 0f;
             col.gameObject.GetComponent<EnemyAI>().collider.enabled = false;
             Destroy(col.gameObject, 2f);
+            FindObjectOfType<LevelCreator>().numberOfEnemies--;
         }
         if (col.gameObject.tag.Equals("Player"))
         {

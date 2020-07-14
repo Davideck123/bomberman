@@ -10,6 +10,8 @@ public class LevelCreator : MonoBehaviour
 
     public GameObject enemyPrefab;
 
+    public GameObject gatePrefab;
+
     public int numberOfTiles = 50;
     public int numberOfEnemies = 8;
 
@@ -27,6 +29,7 @@ public class LevelCreator : MonoBehaviour
         tilemap.SetTile(new Vector3Int(-7, 1, 0), destructibleTile);
         tilemap.SetTile(new Vector3Int(-9, -1, 0), destructibleTile);
         tiles = 2;
+        bool gateAdded = false;
         while (tiles < numberOfTiles)
         {
             int x = rnd.Next(-9, 12);
@@ -36,6 +39,12 @@ public class LevelCreator : MonoBehaviour
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (tilemap.GetTile(pos) == null)
                 {
+                    if (!gateAdded)
+                    {
+                        Vector3 cellCenterPos = tilemap.GetCellCenterWorld(pos);
+                        Instantiate(gatePrefab, cellCenterPos, Quaternion.identity);
+                        gateAdded = true;
+                    }
                     tilemap.SetTile(pos, destructibleTile);
                     tiles++;
                 }
