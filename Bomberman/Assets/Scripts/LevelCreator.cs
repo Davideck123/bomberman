@@ -14,6 +14,9 @@ public class LevelCreator : MonoBehaviour
     public int numberOfTiles = 50;
     public int numberOfEnemies = 8;
 
+    public bool changeEnemySpeed = false;
+    public float newEnemySpeed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,10 +69,19 @@ public class LevelCreator : MonoBehaviour
                     Vector3 cellCenterPos = tilemap.GetCellCenterWorld(pos);
                     GameObject enemy = Instantiate(enemyPrefab, cellCenterPos, Quaternion.identity);
                     enemy.GetComponent<EnemyAI>().tilemap = tilemap;
+                    if (changeEnemySpeed)
+                    {
+                        setEnemySpeed(enemy, newEnemySpeed);
+                    }
                     enemies++;
                 }
             }
         }
+    }
+
+    void setEnemySpeed(GameObject enemy, float newSpeed)
+    {
+        enemy.GetComponent<EnemyAI>().moveSpeed = newEnemySpeed;
     }
 
 }

@@ -102,6 +102,7 @@ public class EnemyAI : MonoBehaviour
                 col.gameObject.GetComponent<PlayerMovement>().colliders[i].enabled = false;
             }
             Destroy(col.gameObject, 2f);
+            FindObjectOfType<GameMenu>().canvas.enabled = true;
         }
     }
 }
