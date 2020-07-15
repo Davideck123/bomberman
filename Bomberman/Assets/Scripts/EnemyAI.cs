@@ -24,15 +24,21 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        ///layer 10: enemy, enemies don't collide with themselves
+
         Physics2D.IgnoreLayerCollision(10, 10);
     }
     void Update()
     {
-        if (!directionChosen)
+        ///Set enemy direction if not chosen
+        ///Check obstacles in enemy direction
+        ///Animation
+
+        if (!directionChosen) //enemy can't always choose every possible way
         {
-            getDirection();
+            GetDirection();
         }
-        if (obstacleThere(wallChecks[index])) {
+        if (ObstacleThere(wallChecks[index])) {
             movement.x = 0;
             movement.y = 0;
             directionChosen = false;
@@ -44,14 +50,18 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        ///Enemy Movement
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void getDirection()
+    void GetDirection()
     {
+        ///Set new random direction, not to an obstacle though 
+
         System.Random rnd = new System.Random();
         index = rnd.Next(4);
-        while (obstacleThere(wallChecks[index]))
+        while (ObstacleThere(wallChecks[index]))
         {
             index = rnd.Next(4);
         }
@@ -61,11 +71,13 @@ public class EnemyAI : MonoBehaviour
         directionChosen = true;
     }
 
-    bool obstacleThere(GameObject check)
+    bool ObstacleThere(GameObject check)
     {
+        ///Decide, if obstacle is at a position of the enemy wallCheck object
+
         Vector3 worldPos = check.transform.position;
         Vector3Int cell = tilemap.WorldToCell(worldPos);
-        if (tilemap.GetTile(cell) != null)
+        if (tilemap.GetTile(cell) != null) //tile block
         {
             return true;
         }
@@ -74,18 +86,18 @@ public class EnemyAI : MonoBehaviour
         {
             Vector3 bombPos = GameObject.FindGameObjectWithTag("Bomb").transform.position;
             Vector3Int bombCell = tilemap.WorldToCell(bombPos);
-            if (cell == bombCell)
+            if (cell == bombCell) //bomb block - only works for one bomb at a time
             {
                 return true;
             }
             Vector3 gatePos = GameObject.FindGameObjectWithTag("Gate").transform.position;
             Vector3Int gateCell = tilemap.WorldToCell(gatePos);
-            if (cell == gateCell)
+            if (cell == gateCell) //gate block
             {
                 return true;
             }
         }
-        catch (System.NullReferenceException)
+        catch (System.NullReferenceException) //no bomb placed
         {
         }
         return false;
@@ -93,6 +105,8 @@ public class EnemyAI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        ///Kill player object on collision
+
         if (col.gameObject.tag.Equals("Player"))
         {
             col.gameObject.GetComponent<PlayerMovement>().animator.SetBool("Death", true);

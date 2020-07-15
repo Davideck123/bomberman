@@ -12,21 +12,25 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    // Update is called once per frame
     void Update()
     {
-        // Input
-        inputUpdate();
+        ///Update player input
+
+        InputUpdate();
     }
 
     void FixedUpdate()
     {
-        // Movement
+        /// Movement
+        
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void inputUpdate()
+    void InputUpdate()
     {
+        ///Player input
+        ///Animation
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();

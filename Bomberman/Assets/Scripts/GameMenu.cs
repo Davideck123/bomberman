@@ -5,13 +5,17 @@ public class GameMenu : MonoBehaviour
 {
     public Canvas canvas;
 
-    public void restartGame()
+    public void RestartGame()
     {
+        ///Restart current level
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void goToMenu()
+    public void GoToMenu()
     {
+        ///Load menu scene
+
         SceneManager.LoadScene(0);
     }
 }

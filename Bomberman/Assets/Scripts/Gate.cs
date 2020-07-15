@@ -11,11 +11,11 @@ public class Gate : MonoBehaviour
     public Sprite gateClosed;
     public Sprite gateOpen;
 
-
-    // Update is called once per frame
     void Update()
     {
-        if(FindObjectOfType<LevelCreator>().numberOfEnemies <= 0)
+        ///If enemies aren't alive, open the gate
+
+        if (FindObjectOfType<LevelCreator>().numberOfEnemies <= 0)
         {
             renderer.sprite = gateOpen;
             boxCol.enabled = false;
@@ -25,14 +25,18 @@ public class Gate : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        ///Enter gate on collision with player
+
         if (col.gameObject.tag.Equals("Player"))
         {
-            Invoke("enterGate", 0.15f);
+            Invoke("ChangeScene", 0.15f);
         }
     }
 
-    void enterGate()
+    void ChangeScene()
     {
+        ///Change scene to a next one
+
         FindObjectOfType<PlayerMovement>().moveSpeed = 0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

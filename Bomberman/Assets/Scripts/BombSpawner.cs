@@ -13,22 +13,25 @@ public class BombSpawner : MonoBehaviour
     bool bombCollision = true;
     public bool bombSpawned = false;
 
-    // Update is called once per frame
     void Update()
     {
+        ///place bomb, one at a time
+
         Vector3 worldPos = player.transform.position;
         worldPos.y = worldPos.y + 0.45f;
         Vector3Int cell = tilemap.WorldToCell(worldPos);
 
         if (Input.GetButtonDown("Fire1") && !bombSpawned)
         {
-            spawnBomb(cell);
+            SpawnBomb(cell);
         }
-        updateBombCollision(cell);
+        UpdateBombCollision(cell);
     }
 
-    void spawnBomb(Vector3Int cell)
+    void SpawnBomb(Vector3Int cell)
     {
+        ///create bomb object at the cell location
+        
         Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cell);
 
         Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
@@ -37,8 +40,12 @@ public class BombSpawner : MonoBehaviour
         bombSpawned = true;
     }
 
-    void updateBombCollision(Vector3Int cell)
+    void UpdateBombCollision(Vector3Int cell)
     {
+        ///layer 8: player, layer 9: bomb
+        ///bomb doesn't collide with player until player leaves 
+        ///the cell of the bomb
+
         if (!bombCollision && lastBombCell == cell)
         {
             Physics2D.IgnoreLayerCollision(8, 9);

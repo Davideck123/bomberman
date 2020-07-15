@@ -12,6 +12,8 @@ public class MapDestroyer : MonoBehaviour
 
     public void Explosion(Vector2 pos)
     {
+        ///explode the baseCell and the cells around it
+
         Vector3Int baseCell = tilemap.WorldToCell(pos);
 
         ExplodeCell(baseCell);
@@ -23,6 +25,9 @@ public class MapDestroyer : MonoBehaviour
 
     void ExplodeCell(Vector3Int cell)
     {
+        ///Create explosion object at the cell location
+        ///if there's not something indestructible
+
         Tile tile =  tilemap.GetTile<Tile>(cell);
 
         if (tile != null && tile != destructibleTile)

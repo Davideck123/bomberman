@@ -4,17 +4,20 @@ public class Bomb : MonoBehaviour
 {
     public float countdown = 2f;
 
-
-    // Update is called once per frame
     void Update()
     {
+        ///start explosion after the end of the countdown
+        
         countdown -= Time.deltaTime;
 
         if (countdown <= 0f)
         {
             FindObjectOfType<MapDestroyer>().Explosion(transform.position);
             Destroy(gameObject);
-            FindObjectOfType<BombSpawner>().bombSpawned = false;
+            if (FindObjectOfType<BombSpawner>() != null)
+            {
+                FindObjectOfType<BombSpawner>().bombSpawned = false;
+            }
         }
     }
 }

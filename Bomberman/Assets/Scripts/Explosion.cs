@@ -6,11 +6,13 @@ public class Explosion : MonoBehaviour
 
     float collisionTime = 0.4f;
 
-    // Update is called once per frame
     void Update()
     {
+        ///Disable collision with the explosion object after collisionTime
+        ///Then destroy the explosion
+
         collisionTime -= Time.deltaTime;
-        if(collisionTime <= 0f)
+        if (collisionTime <= 0f)
         {
             collider.enabled = false;
         }
@@ -19,6 +21,8 @@ public class Explosion : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        ///Kill Player, Enemies, if they collide with explosion object
+        
         if (col.gameObject.tag.Equals("Enemy")) {
             col.gameObject.GetComponent<EnemyAI>().animator.SetBool("Death", true);
             col.gameObject.GetComponent<EnemyAI>().moveSpeed = 0f;

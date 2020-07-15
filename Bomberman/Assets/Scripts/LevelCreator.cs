@@ -17,16 +17,19 @@ public class LevelCreator : MonoBehaviour
     public bool changeEnemySpeed = false;
     public float newEnemySpeed = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
+        ///Randomly spawn destructible tiles and enemies
+
         System.Random rnd = new System.Random();
-        createDestructibleTiles(rnd);
-        spawnEnemies(rnd);
+        CreateDestructibleTiles(rnd);
+        SpawnEnemies(rnd);
     }
 
-    void createDestructibleTiles(System.Random rnd)
+    void CreateDestructibleTiles(System.Random rnd)
     {
+        ///Spawn destructible tiles at empty tilemap tiles
+
         int tiles = 0;
         tilemap.SetTile(new Vector3Int(-7, 1, 0), destructibleTile);
         tilemap.SetTile(new Vector3Int(-9, -1, 0), destructibleTile);
@@ -54,8 +57,11 @@ public class LevelCreator : MonoBehaviour
         }
     }
 
-    void spawnEnemies(System.Random rnd)
+    void SpawnEnemies(System.Random rnd)
     {
+        ///Spawn enemies at empty locations
+        ///Optional: change speed of enemies
+
         int enemies = 0;
         while (enemies < numberOfEnemies)
         {
@@ -71,7 +77,7 @@ public class LevelCreator : MonoBehaviour
                     enemy.GetComponent<EnemyAI>().tilemap = tilemap;
                     if (changeEnemySpeed)
                     {
-                        setEnemySpeed(enemy, newEnemySpeed);
+                        SetEnemySpeed(enemy);
                     }
                     enemies++;
                 }
@@ -79,8 +85,10 @@ public class LevelCreator : MonoBehaviour
         }
     }
 
-    void setEnemySpeed(GameObject enemy, float newSpeed)
+    void SetEnemySpeed(GameObject enemy)
     {
+        ///Change the actual enemy speed
+
         enemy.GetComponent<EnemyAI>().moveSpeed = newEnemySpeed;
     }
 
