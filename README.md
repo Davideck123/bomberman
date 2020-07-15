@@ -40,7 +40,7 @@ Controls the object explosion.
 Appears when player dies.
 
 ### ``Gate.cs``
-Controls the gate where player has to go.
+Controls the gate object where player has to go.
 
 ### ``LevelCreator.cs``
 Randomly spawns objects to make levels not look the same every time.
