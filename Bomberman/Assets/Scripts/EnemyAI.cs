@@ -78,6 +78,12 @@ public class EnemyAI : MonoBehaviour
             {
                 return true;
             }
+            Vector3 gatePos = GameObject.FindGameObjectWithTag("Gate").transform.position;
+            Vector3Int gateCell = tilemap.WorldToCell(gatePos);
+            if (cell == gateCell)
+            {
+                return true;
+            }
         }
         catch (System.NullReferenceException)
         {

@@ -25,7 +25,7 @@ public class MapDestroyer : MonoBehaviour
     {
         Tile tile =  tilemap.GetTile<Tile>(cell);
 
-        if (tile == solidTile)
+        if (tile != null && tile != destructibleTile)
         {
             return;
         }
