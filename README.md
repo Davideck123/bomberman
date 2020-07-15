@@ -11,6 +11,9 @@ If you want look inside of this project, you need to have **[Unity](https://unit
 **If you don't have Unity but still want to play, you can play in your browser [here](https://connect.unity.com/mg/other/bomberman-2).**
 
 ## Examples
+Each level is always created a bit differently thanks to the random spawns. For example, number of destructible tiles, number of enemies and the speed of enemies can be changed easily in the Unity Editor making creating and adjusting new levels easier.
+
+##
 
 <img src="Examples/level1.png" alt="Level 1" width="800"><br><br>
 
